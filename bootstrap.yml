@@ -1,0 +1,41 @@
+---
+- name: Trick out Debian server
+  hosts: all
+  become: true  
+
+  roles:
+    - role: jnv.unattended-upgrades            
+
+  tasks:
+    - name: Update apt cache to the latest version      
+      apt: update_cache=yes cache_valid_time=3600
+
+    - name: Upgrade all package to the latest      
+      apt: upgrade=dist
+        
+    - name: Install desired packages      
+      apt: package="{{ item }}" state=latest update_cache=yes
+      with_items:
+        - htop      
+        - fail2ban
+        - ufw
+        - unattended-upgrades   
+
+    - name: Setup ufw
+      ufw: state=enabled policy=deny                            
+    
+    - name: Allow ssh traffic
+      ufw: rule=allow name=OpenSSH
+    
+    - name: Open Docker daemon, HTTP(S), and Swarm ports
+      ufw: rule=allow port={{ item }} proto=tcp
+      with_items:
+        - 80     # Default HTTP port
+        - 443    # Default HTTPS port
+        - 2375   # Docker daemon API port (non-TLS)
+        - 2376   # Docker daemon API port (TLS)
+        - 3376   # Swarm API port
+        - 7946   # Serf port (libnetwork)
+
+        
+  
