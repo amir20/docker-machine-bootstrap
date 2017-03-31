@@ -4,7 +4,8 @@
   become: true  
 
   roles:
-    - role: jnv.unattended-upgrades            
+    - role: jnv.unattended-upgrades    
+    - role: debops.fail2ban        
 
   tasks:
     - name: Update apt cache to the latest version      
@@ -16,10 +17,8 @@
     - name: Install desired packages      
       apt: package="{{ item }}" state=latest update_cache=yes
       with_items:
-        - htop      
-        - fail2ban
+        - htop              
         - ufw
-        - unattended-upgrades   
 
     - name: Setup ufw
       ufw: state=enabled policy=deny                            
