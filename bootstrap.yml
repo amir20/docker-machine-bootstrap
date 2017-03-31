@@ -37,5 +37,8 @@
         - 3376   # Swarm API port
         - 7946   # Serf port (libnetwork)
 
-        
-  
+    - name: Add system prune to cron weekly    
+      cron:
+        name: "docker system prune weekly"
+        special_time: weekly
+        job: "docker system prune -f > /var/log/docker-cleanup.log"          
