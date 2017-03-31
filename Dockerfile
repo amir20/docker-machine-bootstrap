@@ -2,7 +2,7 @@
 FROM alpine:3.5
 MAINTAINER Amir Raminfar <findamir@gmail.com>
 
-ENV ANSIBLE_VERSION=2.2.0
+ENV ANSIBLE_VERSION=2.2.1.0
 ENV ANSIBLE_HOST_KEY_CHECKING False
 
 RUN apk --no-cache add python openssh \    
