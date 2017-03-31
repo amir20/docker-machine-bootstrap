@@ -15,7 +15,7 @@ fi
 
 cat /root/.ssh/id_rsa.pub >> /hostssh/authorized_keys
 
-ansible all -i "localhost," -m raw -a "apt-get install -y python-minimal"
+ansible all -i "localhost," -m raw -a "apt-get install -y ansible"
 ansible-playbook -i "localhost," /ansible/bootstrap.yml
 
 if [ -e /hostssh/authorized_keys.bak ]; then
