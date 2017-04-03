@@ -23,4 +23,3 @@ if [ -e /hostssh/authorized_keys.bak ]; then
 else
     rm /hostssh/authorized_keys
 fi
-
