@@ -3,6 +3,8 @@ sudo: required
 services:
   - docker
 
+language: generic  
+
 before_install:
   - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
   - docker-compose build
