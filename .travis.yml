@@ -8,12 +8,6 @@ language: generic
 before_install:
   - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
   - docker-compose build
-
-script:
-  - true 
-
-after_success:
-  - if [ "$TRAVIS_BRANCH" == "master" ]; then  
-    docker-compose push
-    fi
   
+script:
+  - docker-compose push
