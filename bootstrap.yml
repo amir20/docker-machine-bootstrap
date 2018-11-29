@@ -39,5 +39,5 @@
     - name: Add system prune to cron weekly    
       cron:
         name: "docker system prune weekly"
-        special_time: weekly
+        special_time: daily
         job: "docker system prune -f > /var/log/docker-cleanup.log"          
