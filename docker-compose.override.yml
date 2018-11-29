@@ -1,5 +1,4 @@
-version: '2'
+version: "2"
 services:
-  docker-machine-bootstrap:      
-    build: .  
-    
+  docker-machine-bootstrap:
+    build: .

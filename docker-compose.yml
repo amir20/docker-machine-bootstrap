@@ -1,8 +1,7 @@
-version: '2'
+version: "2"
 services:
-  docker-machine-bootstrap:          
+  docker-machine-bootstrap:
     image: amir20/docker-machine-bootstrap
     network_mode: host
     volumes:
-        - /root/.ssh:/hostssh
-    
+      - /root/.ssh:/hostssh
